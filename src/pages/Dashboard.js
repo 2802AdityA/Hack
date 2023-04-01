@@ -2,7 +2,11 @@ import styles from '../styles/pages/Dashboard.module.css';
 
 import { useOutletContext } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+
 import TextSpeech from './TextSpeech';
+
+import Analysis from './Analysis';
+
 
 const Dashboard = () => {
   const { user } = useOutletContext();
@@ -27,7 +31,11 @@ const Dashboard = () => {
           Edit the <code>src/pages/Dashboard.js</code> file to populate this
           page.
         </p>
+
         <TextSpeech />
+
+        <Analysis />
+
       </div>
     </>
   );
