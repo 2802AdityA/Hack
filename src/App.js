@@ -9,6 +9,11 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import BlogList from './components/Blog/BlogList';
+import BlogPage from './pages/Blog/BlogPage';
+import BlogPost from './components/Blog/BlogPost';
+import UserBlog from './pages/Blog/UserBlog';
+import WriteBlog from './pages/Blog/WriteBlog';
 
 import Exercise_blog from './pages/Exercise_blog';
 
@@ -42,7 +47,14 @@ function App() {
                 <Route path="/room/:roomID" element={<Room/>}/>
                 <Route index element={<Dashboard />} />
                 <Route path="profile" element={<Profile />} />
+
+                <Route path="blog" element={<BlogPage />} />
+                <Route path="blogpost/:id" element={<BlogPost />} />
+                <Route path="userBlog/:userName" element={<UserBlog />} />
+                <Route path='writeBlog' element={<WriteBlog />} />
+
                 <Route path="exercises" element={<Exercise_blog />} />
+
               </Route>
             </Routes>
           </BrowserRouter>
