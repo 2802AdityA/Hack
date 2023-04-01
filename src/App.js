@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Exercise_blog from './pages/Exercise_blog';
 
 const nhost = new NhostClient({
   subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
@@ -34,6 +35,7 @@ function App() {
               >
                 <Route index element={<Dashboard />} />
                 <Route path="profile" element={<Profile />} />
+                <Route path="exercises" element={<Exercise_blog />} />
               </Route>
             </Routes>
           </BrowserRouter>
