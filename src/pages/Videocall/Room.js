@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 
@@ -37,13 +37,8 @@ export default function Room() {
         });
     }
 
-    useEffect(() => {
-        const element = document.getElementById("meeting");
-        meeting(element);
-    }, []);
-
     return (
-        <div ref={meeting} style={{ width: '100vw', height: '100vh' }}>
+        <div ref={meeting}>
             <h1>Room</h1>
         </div>
     );
