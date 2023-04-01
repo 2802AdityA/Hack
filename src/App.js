@@ -9,6 +9,10 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import BlogList from './components/Blog/BlogList';
+import BlogPage from './pages/Blog/BlogPage';
+import BlogPost from './components/Blog/BlogPost';
+import UserBlog from './pages/Blog/UserBlog';
 
 const nhost = new NhostClient({
   subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
@@ -34,6 +38,9 @@ function App() {
               >
                 <Route index element={<Dashboard />} />
                 <Route path="profile" element={<Profile />} />
+                <Route path="blog" element={<BlogPage />} />
+                <Route path="blogpost/:id" element={<BlogPost />} />
+                <Route path="userBlog/:userName" element={<UserBlog />} />
               </Route>
             </Routes>
           </BrowserRouter>

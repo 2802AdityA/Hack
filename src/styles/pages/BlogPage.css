@@ -1,0 +1,15 @@
+.blog-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blog-home-title {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.blog-home-title h1 {
+    font-size: xx-large;
+}
