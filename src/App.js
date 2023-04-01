@@ -15,6 +15,12 @@ import BlogPost from './components/Blog/BlogPost';
 import UserBlog from './pages/Blog/UserBlog';
 import WriteBlog from './pages/Blog/WriteBlog';
 
+import Exercise_blog from './pages/Exercise_blog';
+
+import Home from './pages/Videocall/Home';
+import Room from './pages/Videocall/Room';
+
+
 const nhost = new NhostClient({
   subdomain: process.env.REACT_APP_NHOST_SUBDOMAIN,
   region: process.env.REACT_APP_NHOST_REGION,
@@ -37,12 +43,18 @@ function App() {
                   </ProtectedRoute>
                 }
               >
+                <Route path="video" element={<Home/>}/>
+                <Route path="/room/:roomID" element={<Room/>}/>
                 <Route index element={<Dashboard />} />
                 <Route path="profile" element={<Profile />} />
+
                 <Route path="blog" element={<BlogPage />} />
                 <Route path="blogpost/:id" element={<BlogPost />} />
                 <Route path="userBlog/:userName" element={<UserBlog />} />
                 <Route path='writeBlog' element={<WriteBlog />} />
+
+                <Route path="exercises" element={<Exercise_blog />} />
+
               </Route>
             </Routes>
           </BrowserRouter>
