@@ -2,6 +2,7 @@ import styles from '../styles/pages/Dashboard.module.css';
 
 import { useOutletContext } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import About from '../components/About';
 
 const Dashboard = () => {
   const { user } = useOutletContext();
@@ -11,6 +12,8 @@ const Dashboard = () => {
       <Helmet>
         <title>Dashboard - Nhost</title>
       </Helmet>
+
+      <About />
 
       <div>
         <h2 className={styles.title}>Dashboard</h2>
