@@ -1,0 +1,13 @@
+.blog-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .blog-list-container {
+      justify-content: space-between;
+    }
+  }
+  

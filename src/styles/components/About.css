@@ -1,0 +1,45 @@
+.about-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #e3e2df;
+    padding: 3rem;
+  }
+  
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    color: #5d001e;
+  }
+  
+  .about-title h1 {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+  
+  .about-para p {
+    font-size: large;
+  }
+  
+  .about-svg {
+    width: 20%;
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column-reverse;
+      padding: 2rem;
+    }
+  
+    .about-content {
+      width: 100%;
+    }
+  
+    .about-svg {
+      width: 50%;
+      margin-top: 2rem;
+      padding-bottom: 4rem;
+    }
+  }
+  
