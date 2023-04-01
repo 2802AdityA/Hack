@@ -1,35 +1,47 @@
 import React from 'react';
 import BlogCard from './BlogCard';
-import blogPosts from '../../assets/dummydata';
+// import blogPosts from '../../assets/dummydata';
 
 import '../../styles/components/BlogList.css';
+import { gql, useQuery } from '@apollo/client';
 
-const BlogList = ({userPosts}) => {
+
+const GET_POSTS = gql`
+  query getPosts {
+    document {
+      id
+      title
+      author_name
+      date
+      content
+    }
+  }
+`;
 
 
-return (
+const BlogList = () => {
+
+  const { loading, error, data } = useQuery(GET_POSTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
+
+  const blogPosts = data.document;
+  console.log(blogPosts)
+
+  return (
     <div className="blog-list">
 
-      {userPosts ? (userPosts.map((post) => (
-        <BlogCard
-          key={post.id}
-          id= {post.id}
-          title={post.title}
-          author={post.author}
-          date={post.date}
-          excerpt={post.excerpt}
-        />
-      ))) : (blogPosts.map((post) => (
+      {blogPosts.map((post) => (
         <BlogCard
           key={post.id}
           id={post.id}
           title={post.title}
-          author={post.author}
+          author={post.author_name}
           date={post.date}
-          excerpt={post.excerpt}
+          content={post.content}
         />
-      ))) }
-
+      ))}
     </div>
   );
 };
