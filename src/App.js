@@ -19,6 +19,7 @@ import Exercise_blog from './pages/Exercise_blog';
 
 import Home from './pages/Videocall/Home';
 import Room from './pages/Videocall/Room';
+import Analysis from './pages/Analysis';
 
 
 const nhost = new NhostClient({
@@ -43,8 +44,8 @@ function App() {
                   </ProtectedRoute>
                 }
               >
-                <Route path="video" element={<Home/>}/>
-                <Route path="/room/:roomID" element={<Room/>}/>
+                <Route path="video" element={<Home />} />
+                <Route path="/room/:roomID" element={<Room />} />
                 <Route index element={<Dashboard />} />
                 <Route path="profile" element={<Profile />} />
 
@@ -52,7 +53,7 @@ function App() {
                 <Route path="blogpost/:id" element={<BlogPost />} />
                 <Route path="userBlog/:userName" element={<UserBlog />} />
                 <Route path='writeBlog' element={<WriteBlog />} />
-
+                <Route path="chat" element={<Analysis />} />
                 <Route path="exercises" element={<Exercise_blog />} />
 
               </Route>
