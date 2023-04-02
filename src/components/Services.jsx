@@ -6,6 +6,9 @@ import '../styles/components/Services.css';
 const Services = () => {
   return (
     <div className="service-container">
+        <h2>Our Services
+            
+        </h2>
         <div className="service-list">
             <ServiceCard 
                 type="CHATBOT"
