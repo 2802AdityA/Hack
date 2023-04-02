@@ -3,7 +3,7 @@ import data from ".././components/Exercise"
 
 export default function Exercise_blog() {
     return (
-        <div className="p-4 space-y-16">
+        <div className="p-4 space-y-16 mt-24">
             <p className="text-7xl font-serif font-semibold text-[#5d001e] mx-auto text-center">Exercises</p>
             <p className="text-3xl font-serif text-center text-[#9a1750]">Breathe In, Stress Out: Exercises for a Calm and Clear Mind</p>
             {data.map((item) => {

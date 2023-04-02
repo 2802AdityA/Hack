@@ -1,36 +1,52 @@
 import React from 'react'
 import ServiceCard from './ServiceCard'
 import '../styles/components/Services.css';
-import { useNavigate } from 'react-router';
 
-const Services = () => {
+const data = [
+    {
+        type: "CHATBOT",
+        name: "Bot Talk Time",
+        route: "/chat"
+    },
+    {
+        type: "VIDEOCALL",
+        name: "Connect with people",
+        route: 'video'
+    },
+    {
+        type: "BLOG",
+        name: "The SocioAid Blog",
+        route: "/blog"
+    },
+    {
+        type: "EXERCISE",
+        name: "Exercise to imporve",
+        route: "/exercises"
+    },
+    {
+        type: "DR_CONNECT",
+        name: "Connect with a professional",
+        route: "/appointment"
+    }
+]
 
-    const navigate = useNavigate();
+
+const Services = () => {    
     return (
         <div className="service-container">
+            <p className="text-7xl font-serif font-semibold text-[#5d001e] mx-auto text-center">Services</p>
             <div className="service-list">
-                <ServiceCard
-                    type="CHATBOT"
-                    name="Bot Talk Time"
-                    onClick={navigate('/chat')}
-                />
-                <ServiceCard
-                    type="VIDEOCALL"
-                    name="Connect with people"
-                    onClick={navigate('/video')}
-                />
-                <ServiceCard
-                    type="BLOG"
-                    name="The SocioAid Blog"
-                />
-                <ServiceCard
-                    type="EXERCISE"
-                    name="Exercise to imporve"
-                />
-                <ServiceCard
-                    type="DR_CONNECT"
-                    name="Connect with a professional"
-                />
+                {data.map((item, index) => {
+                    return (
+                        <ServiceCard
+                            key={index}
+                            type={item.type}
+                            name={item.name}
+                            route={item.route}
+                        />
+                    )
+                })
+                }
             </div>
         </div>
     )

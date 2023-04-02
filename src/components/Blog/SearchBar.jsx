@@ -14,10 +14,10 @@ function SearchBar() {
   };
 
   return (
-    <div className="search-container">
+    <div className="search-container mt-4">
         <form onSubmit={handleSearchSubmit}>
         <input type="text" value={searchText} placeHolder="@username" onChange={handleSearchInputChange} />
-        <button type="submit">Search</button>
+        <button type="submit" className='text-semibold' style={{backgroundColor:"#e3afbc",color:"black"}}>Search</button>
         </form>
     </div>
   );

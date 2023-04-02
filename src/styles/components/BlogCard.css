@@ -1,5 +1,5 @@
 .wrapper {
-  background: #efeff3;
+  background: #fff;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #212121;
@@ -32,11 +32,12 @@
 
 .card {
   position: relative;
-  background: #f7faed;
+  background: #ffffff;
   padding: 50px;
   width: 100%;
   margin: 20px auto 0 auto;
   box-shadow: 0 2px 4px rgba(100, 100, 100, .1);
+  border-radius:10px;
 }
 
 .card h2 {
