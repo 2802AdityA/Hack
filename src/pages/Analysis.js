@@ -5,6 +5,8 @@ import { Analyzer } from 'web-audio-analyser';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 import { async } from 'q';
+import { useSpeechSynthesis } from 'react-speech-kit'
+
 const API_KEY = "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";
 const systemMessage = {
   "role": "system", "content": "The user has social anxiety or shy to talk to people and is talking to you to improve his communication skills and overcome the fear so give answers like a human being and start with any topic of conversation from the start"
@@ -18,12 +20,15 @@ function Analysis() {
   const [clarityData, setClarityData] = useState([]);
   const [messages, setMessages] = useState([
     {
-        message: "Hello, I'm Dan! Ask me anything!",
-        sentTime: "just now",
-        sender: "ChatGPT"
+      message: "Hello, I'm Dan! Ask me anything!",
+      sentTime: "just now",
+      sender: "ChatGPT"
     }
-]);
-    const [isTyping, setIsTyping] = useState(false);
+  ]);
+  const [isTyping, setIsTyping] = useState(false);
+
+  const [text, setText] = useState();
+  const { speak } = useSpeechSynthesis();
 
 
   const toggleListening = () => {
@@ -40,9 +45,9 @@ function Analysis() {
 
   const handleSend = async (message) => {
     const newMessage = {
-        message,
-        direction: 'outgoing',
-        sender: "user"
+      message,
+      direction: 'outgoing',
+      sender: "user"
     };
 
     const newMessages = [...messages, newMessage];
@@ -53,53 +58,69 @@ function Analysis() {
     // How it responds, how it talks, etc.
     setIsTyping(true);
     await processMessageToChatGPT(newMessages);
-};
-async function processMessageToChatGPT(chatMessages) { // messages is an array of messages
-  // Format messages for chatGPT API
-  // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
-  // So we need to reformat
+  };
 
-  let apiMessages = chatMessages.map((messageObject) => {
-      let role = "";
-      if (messageObject.sender === "ChatGPT") {
-          role = "assistant";
-      } else {
-          role = "user";
-      }
-      return { role: role, content: messageObject.message }
-  });
-
-
-  // Get the request body set up with the model we plan to use
-  // and the messages which we formatted above. We add a system message in the front to'
-  // determine how we want chatGPT to act. 
-  const apiRequestBody = {
-      "model": "gpt-3.5-turbo",
-      "messages": [
-          systemMessage,  // The system message DEFINES the logic of our chatGPT
-          ...apiMessages // The messages from our chat with ChatGPT
-      ]
+  const handleSpeak = async () => {
+    await speak({ text });
   }
 
-  await fetch("https://api.openai.com/v1/chat/completions",
+  async function processMessageToChatGPT(chatMessages) { // messages is an array of messages
+    // Format messages for chatGPT API
+    // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
+    // So we need to reformat
+
+    let apiMessages = chatMessages.map((messageObject) => {
+      let role = "";
+      if (messageObject.sender === "ChatGPT") {
+        role = "assistant";
+      } else {
+        role = "user";
+      }
+      return { role: role, content: messageObject.message }
+    });
+
+
+    // Get the request body set up with the model we plan to use
+    // and the messages which we formatted above. We add a system message in the front to'
+    // determine how we want chatGPT to act. 
+    const apiRequestBody = {
+      "model": "gpt-3.5-turbo",
+      "messages": [
+        systemMessage,  // The system message DEFINES the logic of our chatGPT
+        ...apiMessages // The messages from our chat with ChatGPT
+      ]
+    }
+
+    await fetch("https://api.openai.com/v1/chat/completions",
       {
-          method: "POST",
-          headers: {
-              "Authorization": "Bearer " + API_KEY,
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify(apiRequestBody)
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + API_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(apiRequestBody)
       }).then((data) => {
-          return data.json();
+        return data.json();
       }).then((data) => {
-          console.log(data);
-          setMessages([...chatMessages, {
-              message: data.choices[0].message.content,
-              sender: "ChatGPT"
-          }]);
-          setIsTyping(false);
+        console.log(data);
+        
+        console.log(data.choices[0].message.content);
+        const variableValue = data.choices[0].message.content;
+        speak({ text: variableValue })
+        
+        setText(variableValue);
+        
+        setMessages([...chatMessages, {
+          message: data.choices[0].message.content,
+          sender: "ChatGPT"
+        }]);
+        
+        setIsTyping(false);
+        
       });
-}
+  }
+
+
   const handleResult = async (event) => {
     const message = event.results[0][0].transcript;
     const confidence = event.results[0][0].confidence;
@@ -234,7 +255,7 @@ async function processMessageToChatGPT(chatMessages) { // messages is an array o
       },
     });
 
-    
+
     const clarityChart = new Chart(clarityCtx, {
       type: 'line',
       data: {
@@ -295,37 +316,33 @@ async function processMessageToChatGPT(chatMessages) { // messages is an array o
   });
 
   return (<>
+      <button onClick={toggleListening}>
+        {
+          listening ? 'Stop Listening' : 'Start Listening'
+        }
+      </button>
     <div className="App">
-    <button onClick={toggleListening}>
-          {
-            listening ? 'Stop Listening' : 'Start Listening'
-          }
-        </button>
-            <div style={{ position: "relative", height: "800px", width: "700px", margin: "100px auto"}}>
-                <MainContainer>
-                    <ChatContainer>
-                        <MessageList
-                            scrollBehavior="smooth"
-                            typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
-                        >
-                            {messages.map((message, i) => {
-                              console.log(message)
-                                return <Message key={i} model={message} />
-                            })}
-                        </MessageList>
-                        <MessageInput placeholder="Type message here" onSend={handleSend} />
-                    </ChatContainer>
-                </MainContainer>
-            </div>
-        </div>
+      <div style={{ position: "relative", height: "800px", width: "700px", margin: "100px auto" }}>
+        <MainContainer>
+          <ChatContainer>
+            <MessageList
+              scrollBehavior="smooth"
+              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+            >
+              {messages.map((message, i) => {
+                // console.log(message)
+                return <Message key={i} model={message} />
+              })}
+            </MessageList>
+            <MessageInput placeholder="Type message here" onSend={handleSend} />
+          </ChatContainer>
+        </MainContainer>
+      </div>
+    </div>
     <div>
       <h1>Voice Analysis Charts</h1>
       <div>
-        <button onClick={toggleListening}>
-          {
-            listening ? 'Stop Listening' : 'Start Listening'
-          }
-        </button>
+        
       </div>
       <div>
         <h2>Transcript</h2>
@@ -344,7 +361,7 @@ async function processMessageToChatGPT(chatMessages) { // messages is an array o
         <canvas id="clarity-chart" width="400" height="400" />
       </div>
     </div>
-                              </>
+  </>
   );
 
 }
