@@ -4,6 +4,7 @@ import Sentiment from 'sentiment';
 import { Analyzer } from 'web-audio-analyser';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import { async } from 'q';
 const API_KEY = "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";
 const systemMessage = {
   "role": "system", "content": "The user has social anxiety or shy to talk to people and is talking to you to improve his communication skills and overcome the fear so give answers like a human being and start with any topic of conversation from the start"
@@ -99,7 +100,7 @@ async function processMessageToChatGPT(chatMessages) { // messages is an array o
           setIsTyping(false);
       });
 }
-  const handleResult = (event) => {
+  const handleResult = async (event) => {
     const message = event.results[0][0].transcript;
     const confidence = event.results[0][0].confidence;
     const sentiment = new Sentiment().analyze(message).comparative;
@@ -112,6 +113,7 @@ async function processMessageToChatGPT(chatMessages) { // messages is an array o
     setConfidenceData(confidenceData.concat([{ message, confidence }]));
     setSentimentData(sentimentData.concat([{ message, sentiment }]));
     setClarityData(clarityData.concat([{ message, clarity }]));
+    await handleSend(message);
   };
 
   const calculateClarity = (message) => {
@@ -294,6 +296,11 @@ async function processMessageToChatGPT(chatMessages) { // messages is an array o
 
   return (<>
     <div className="App">
+    <button onClick={toggleListening}>
+          {
+            listening ? 'Stop Listening' : 'Start Listening'
+          }
+        </button>
             <div style={{ position: "relative", height: "800px", width: "700px", margin: "100px auto"}}>
                 <MainContainer>
                     <ChatContainer>
