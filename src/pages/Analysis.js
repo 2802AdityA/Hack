@@ -7,7 +7,7 @@ import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Typin
 import { async } from 'q';
 import { useSpeechSynthesis } from 'react-speech-kit'
 
-const API_KEY = "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";
+const API_KEY = "YOUR_API_KEY";
 const systemMessage = {
   "role": "system", "content": "The user has social anxiety or shy to talk to people and is talking to you to improve his communication skills and overcome the fear so give answers like a human being and start with any topic of conversation from the start"
 }
