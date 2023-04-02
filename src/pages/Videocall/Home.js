@@ -18,10 +18,6 @@ export default function Home() {
     <div className="">
       <div className="relative">
         <div className=" absolutemax-h-[30rem] flex overflow-hidden ">
-          {/* <img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29ubmVjdGluZyUyMHBlb3BsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
-            className="object-cover w-full h-screen  z-0"
-            alt="random"
-          /> */}
         </div>
         <div className="absolute top-0 left-0 w-full  flex items-center justify-center">
         <form action="" onSubmit={submitCode}
