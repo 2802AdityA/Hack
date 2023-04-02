@@ -26,7 +26,7 @@ const data = [
     {
         type: "DR_CONNECT",
         name: "Connect with a professional",
-        route: "/drconnect"
+        route: "/appointment"
     }
 ]
 
@@ -34,6 +34,7 @@ const data = [
 const Services = () => {    
     return (
         <div className="service-container">
+            <p className="text-7xl font-serif font-semibold text-[#5d001e] mx-auto text-center">Services</p>
             <div className="service-list">
                 {data.map((item, index) => {
                     return (
