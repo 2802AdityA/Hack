@@ -15,6 +15,7 @@ import BlogPost from './components/Blog/BlogPost';
 import UserBlog from './pages/Blog/UserBlog';
 import WriteBlog from './pages/Blog/WriteBlog';
 
+import Drconnect from './pages/Drconnect';
 import Exercise_blog from './pages/Exercise_blog';
 
 import Home from './pages/Videocall/Home';
@@ -55,6 +56,7 @@ function App() {
                 <Route path='writeBlog' element={<WriteBlog />} />
                 <Route path="chat" element={<Analysis />} />
                 <Route path="exercises" element={<Exercise_blog />} />
+                <Route path="/appointment" element={<Drconnect />} />
 
               </Route>
             </Routes>
