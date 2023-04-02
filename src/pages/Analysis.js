@@ -4,7 +4,7 @@ import Sentiment from 'sentiment';
 import { Analyzer } from 'web-audio-analyser';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
-const API_KEY = "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";
+const API_KEY = "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";
 const systemMessage = {
   "role": "system", "content": "The user has social anxiety or shy to talk to people and is talking to you to improve his communication skills and overcome the fear so give answers like a human being and start with any topic of conversation from the start"
 }
@@ -294,7 +294,7 @@ async function processMessageToChatGPT(chatMessages) { // messages is an array o
 
   return (<>
     <div className="App">
-            <div style={{ position: "relative", height: "800px", width: "700px" }}>
+            <div style={{ position: "relative", height: "800px", width: "700px", margin: "100px auto"}}>
                 <MainContainer>
                     <ChatContainer>
                         <MessageList
