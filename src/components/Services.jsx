@@ -4,6 +4,7 @@ import '../styles/components/Services.css';
 import { useNavigate } from 'react-router';
 
 const Services = () => {
+
     const navigate = useNavigate();
     return (
         <div className="service-container">
