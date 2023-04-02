@@ -35,7 +35,7 @@ a {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
   font-size: 1em;
 }
@@ -56,4 +56,19 @@ button {
   cursor: pointer;
   background-color: transparent;
   background-image: none;
+}
+
+.cs-main-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: auto;
+  border: solid 1px #d1dbe3;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #fff;
+  font-size: 1rem;
+  padding: 2rem;
+  border-radius: 20px;
 }

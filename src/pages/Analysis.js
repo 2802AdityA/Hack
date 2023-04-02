@@ -103,20 +103,20 @@ function Analysis() {
         return data.json();
       }).then((data) => {
         console.log(data);
-        
+
         console.log(data.choices[0].message.content);
         const variableValue = data.choices[0].message.content;
         speak({ text: variableValue })
-        
+
         setText(variableValue);
-        
+
         setMessages([...chatMessages, {
           message: data.choices[0].message.content,
           sender: "ChatGPT"
         }]);
-        
+
         setIsTyping(false);
-        
+
       });
   }
 
@@ -316,13 +316,15 @@ function Analysis() {
   });
 
   return (<>
-      <button onClick={toggleListening}>
+    <div style={{ marginTop: "150px", textAlign: "center" }}>
+      <button onClick={toggleListening} style={{ border: "1px solid black", padding: "5px 10px", borderRadius: "10px" }}>
         {
           listening ? 'Stop Listening' : 'Start Listening'
         }
       </button>
+    </div>
     <div className="App">
-      <div style={{ position: "relative", height: "800px", width: "700px", margin: "100px auto" }}>
+      <div style={{ position: "relative", height: "800px", width: "700px", margin: "30px auto" }}>
         <MainContainer>
           <ChatContainer>
             <MessageList
@@ -340,30 +342,22 @@ function Analysis() {
       </div>
     </div>
     <div>
-      <h1>Voice Analysis Charts</h1>
-      <div>
-        
+      <h1 style={{ textAlign: "center", fontSize: "30px", marginTop: "50px"}}>Voice Analysis Charts</h1>
+      <div style={{ textAlign: "center", width: "800px", margin: "30px auto", border: "1px solid #E3E2DF", padding: "20px", borderRadius: "30px" }}>
+        <h2 style={{ marginBottom: "20px", fontSize: "25px" }}>Confidence Chart</h2>
+        <canvas id="confidence-chart" />
       </div>
-      <div>
-        <h2>Transcript</h2>
-        <p>{transcript}</p>
+      <div style={{ textAlign: "center", width: "800px", margin: "50px auto", border: "1px solid #E3E2DF", padding: "20px", borderRadius: "30px" }}>
+        <h2 style={{ marginBottom: "20px", fontSize: "25px" }}>Sentiment Chart</h2>
+        <canvas id="sentiment-chart" />
       </div>
-      <div>
-        <h2>Confidence Chart</h2>
-        <canvas id="confidence-chart" width="400" height="400" />
-      </div>
-      <div>
-        <h2>Sentiment Chart</h2>
-        <canvas id="sentiment-chart" width="400" height="400" />
-      </div>
-      <div>
-        <h2>Clarity Chart</h2>
-        <canvas id="clarity-chart" width="400" height="400" />
+      <div style={{ textAlign: "center", width: "800px", margin: "50px auto", border: "1px solid #E3E2DF", padding: "20px", borderRadius: "30px" }}>
+        <h2 style={{ marginBottom: "20px", fontSize: "25px" }}>Clarity Chart</h2>
+        <canvas id="clarity-chart" />
       </div>
     </div>
   </>
   );
-
 }
 
 export default Analysis;
