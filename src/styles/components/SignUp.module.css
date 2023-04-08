@@ -27,7 +27,7 @@
 }
 
 .logo-wrapper {
-  height: 3.5rem;
+  height: 6rem;
 }
 .logo-wrapper > img {
   width: 100%;
@@ -64,10 +64,11 @@
   border-radius: 0.375rem;
   padding: 0.75rem;
   color: rgb(255, 255, 255);
-  background-color: rgb(37, 99, 235);
+  background-color: #5c0001;
 }
 .button:hover {
-  background-color: rgb(59, 130, 246);
+  background-color: #5c0001;
+  opacity: 0.6;
 }
 .button:focus {
   /* remove default outline */
@@ -85,7 +86,7 @@
   opacity: 0.5;
 }
 .button:disabled:hover {
-  background-color: rgb(37, 99, 235);
+  background-color: #5c0001;
 }
 
 .text {
@@ -94,11 +95,11 @@
 }
 
 .link {
-  color: rgb(37, 99, 235);
+  color: #5c0001;
   transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link:hover {
-  color: rgb(59, 130, 246);
+  color: #5c0001;
   text-decoration-line: underline;
   text-underline-offset: 1px;
 }

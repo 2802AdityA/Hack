@@ -13,11 +13,11 @@ const BlogPage = () => {
   }
 
   return (
-    <div className='blog-home' >
-      <button onClick={handleClick}>Write your blog</button>
-      <div className="blog-home-title">
+    <div className='blog-home mt-24' >
+      <div className="blog-home-title  text-bold">
         <h1>The SocioAid Blog</h1>
       </div>
+      <button onClick={handleClick} className='mx-auto py-auto text-center rounded-full text-xl mb-6'  style={{height:"50px",width:"300px",backgroundColor:"#9a1750",color:"white"}}>Write your blog</button>
       <div className="search_bar-container">
         <SearchBar />
       </div>

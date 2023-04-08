@@ -30,7 +30,7 @@ const BlogList = () => {
   console.log(blogPosts)
 
   return (
-    <div className="blog-list">
+    <div style={{display:"grid", gridTemplateColumns:"1fr 1fr",gap:"2%"}}>
 
       {blogPosts.map((post) => (
         <BlogCard
