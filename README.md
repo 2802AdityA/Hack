@@ -1,91 +1,46 @@
-# Getting Started with Create React App
+# SociaAid - Building Confidence and Overcoming Social Anxiety
 
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+SociaAid is a web-based platform build using ReactJS for the front-end and Nhost cloud-based for the back-end. The platform uses Web Speech API and OpenAI to facilitate the development process. It is accessible from any device with an internet connection and has a user-friendly and easy to navigate interface.
 
-## Available Scripts
+## Features 
 
-In the project directory, you can run:
+Our website offers the following features to help users overcome social anxiety and build confidence:
 
-### `npm start`
+- Real time speech to speech conversation with Bot
+- Progress Dashboard with voice analysis
+- Support Groups with video call feature
+- Exercising Techniques and activities
+- Blogging your Journey
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies and Frameworks
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ReactJS and Tailwind CSS for the front-end
+- Nhost cloud-based service for the back-end
+- OpenAI and Web Speech API
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+To use the SociaAid platform, 
 
-### `npm run build`
+- Create a new account using your email and password
+- Generate OpenAI API key
+- Replace it with the key on the top of Analysis page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best
-performance.
+## Project Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Check out our project demo on YouTube to see how SociaAid works: https://www.youtube.com/watch?v=xJjl3OfhHtY
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+## Contributing
 
-### `npm run eject`
+If you want to contribute to this project, please follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Fork the repository using the "Fork" button on GitHub
+2. Clone the forked repository to your local machine
+3. Create a new branch for your changes using `git checkout -b your-branch-name`
+4. Make your changes and commit them using `git commit -m "your commit message"`
+5. Push your changes to your forked repository using `git push origin your-branch-name`
+6. Create a pull request on GitHub
 
-If you aren't satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
+## Acknowledgments
 
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn't feel obligated to use this
-feature. However we understand that this tool wouldn't be useful if you couldn't
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here:
-[https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks to the contributors who have helped to improve the project.
